@@ -29,21 +29,21 @@ const people = [
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's and return the filtered array
 export function myfilter() {
-
+	return inventors.filter(inv => inv.year >= 1500 && inv.year < 1600)
 }
 
 // Array.prototype.map()
 // 2. Give us an array of the inventor first and last names (i.e. full name)
 // Ex: For the first inventor the full name will be 'Albert Einstein'
 export function map() {
-
+	return inventors.map(inv => inv.first + " " + inv.last);
 }
 
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest and return the sorted array
 export function sort() {
-
+	return inventors.sort((a, b) => b.year - a.year);
 }
 
 
@@ -51,18 +51,18 @@ export function sort() {
 // 4. How many years did all the inventors live?
 // Return the total number of years all the inventors lived
 export function reduce() {
-
+	return inventors.reduce((sum, inv) => sum + (inv.passed - inv.year))
 }
 
 // 5. Sort the inventors by years lived and return the sorted array
 export function sortbylived() {
-
+	return inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
 }
 
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
-
+	return people.sort((a,b) => a.split(" ")[1] - b.split(" ")[1]);
 }
 
 // 7. Reduce Exercise
@@ -71,4 +71,20 @@ const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bik
 
 export function reducedSum() {
     // Return an object containing transports as key and its number of occurances as the key's value
+	const map = new Map();
+	for(const v of data){
+		if(!map.has(v)) map.put(v, 1);
+		else map.put(v, map.get(v)+1);
+	}
+	const ans = [];
+	map.forEach((value, key) => {
+		ans.push({key: value});
+	})
+	return ans;
 }
+
+
+
+
+
+
