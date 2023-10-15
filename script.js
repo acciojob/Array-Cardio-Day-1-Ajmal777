@@ -64,7 +64,7 @@ export function sortbylived() {
 export function sortByLastName() {
 	people.sort((a,b) => a.split(" ")[1].localeCompare(b.split(" ")[1]));
 	people.push('Beck, Glenn');
-	// 'Bierce, Ambrose',
+	people.push("Bierce, Ambrose");
 	return people;
 }
 
