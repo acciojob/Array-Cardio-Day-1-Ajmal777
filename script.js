@@ -2,7 +2,7 @@
 // ## Array Cardio Day 1
 
 // Some data we can work with
-
+const test = document.getElementById('test');
 const inventors = [
     { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
     { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
@@ -62,7 +62,7 @@ export function sortbylived() {
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
-	return people.sort((a,b) => a.split(" ")[1].localeCompare(b.split(" ")[1]));
+	return people.sort((a,b) => b.split(" ")[1].localeCompare(a.split(" ")[1]));
 }
 
 // 7. Reduce Exercise
@@ -71,18 +71,13 @@ const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bik
 
 export function reducedSum() {
     // Return an object containing transports as key and its number of occurances as the key's value
-	const map = new Map();
-	for(const v of data){
-		if(!map.has(v)) map.set(v, 1);
-		else map.set(v, map.get(v)+1);
-	}
-	const ans = [];
-	map.forEach((value, key) => {
-		ans.push({key: value});
+	const ans = {};
+	data.forEach(v => {
+		if(ans[v]) ans[v] += 1;
+		else ans[v] = 1;
 	})
 	return ans;
 }
-
 
 
 
