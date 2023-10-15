@@ -62,7 +62,7 @@ export function sortbylived() {
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
-	return people.sort((a,b) => b.split(" ")[1].localeCompare(a.split(" ")[1]));
+	return people.sort((a,b) => a.split(" ")[1].localeCompare(b.split(" ")[1]));
 }
 
 // 7. Reduce Exercise
