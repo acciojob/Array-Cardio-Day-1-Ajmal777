@@ -43,7 +43,7 @@ export function map() {
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest and return the sorted array
 export function sort() {
-	return inventors.sort((a, b) => b.year - a.year);
+	return inventors.sort((a, b) => a.year - b.year);
 }
 
 
@@ -51,18 +51,18 @@ export function sort() {
 // 4. How many years did all the inventors live?
 // Return the total number of years all the inventors lived
 export function reduce() {
-	return inventors.reduce((sum, inv) => sum + (inv.passed - inv.year))
+	return inventors.reduce((sum, inv) => sum + (inv.passed - inv.year), 0)
 }
 
 // 5. Sort the inventors by years lived and return the sorted array
 export function sortbylived() {
-	return inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
+	return inventors.sort((a, b) => (b.passed - b.year) - (a.passed - a.year));
 }
 
 // 6. sort Exercise
 // Sort the people alphabetically by last name and return the sorted array
 export function sortByLastName() {
-	return people.sort((a,b) => a.split(" ")[1] - b.split(" ")[1]);
+	return people.sort((a,b) => a.split(" ")[1].localeCompare(b.split(" ")[1]));
 }
 
 // 7. Reduce Exercise
@@ -73,8 +73,8 @@ export function reducedSum() {
     // Return an object containing transports as key and its number of occurances as the key's value
 	const map = new Map();
 	for(const v of data){
-		if(!map.has(v)) map.put(v, 1);
-		else map.put(v, map.get(v)+1);
+		if(!map.has(v)) map.set(v, 1);
+		else map.set(v, map.get(v)+1);
 	}
 	const ans = [];
 	map.forEach((value, key) => {
